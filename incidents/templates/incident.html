@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Incidents</title>
+    
+    <!-- Static dosya için tagi yüklüyoruz -->
+    
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Cybersecurity Incidents</h1>
+        <p>Please select a day and month:</p>
+
+        <br/>
+
+        <form method="POST">
+            {% csrf_token %}
+            
+            <!-- Day selection (sadece dummy) -->
+            <label for="day">Day:</label>
+            <select id="day" name="day">
+                <option value="">Select</option>
+                <script>
+                    for (let i = 1; i <= 31; i++) {
+                        document.write('<option value="' + i + '">' + i + '</option>');
+                    }
+                </script>
+            </select>
+
+            <!-- Month selection -->
+            <label for="month">Month:</label>
+            <select id="month" name="month">
+                <option value="">Select</option>
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+            </select>
+
+            <br/><br/>
+            <button type="submit">Show Incident</button>
+        </form>
+
+        <div id="incident-output">
+            <h2>Cybersecurity Incident:</h2>
+            <p id="incident">{{ incident }}</p>
+        </div>
+    </div>
+</body>
+</html>

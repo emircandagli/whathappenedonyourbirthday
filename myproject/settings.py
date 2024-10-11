@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-import dj_database_url
+import dj_database_url,
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,15 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-m5qhsr@)hlft_r+5tyl$zniuq^1d-i5*cj^stav8uvft9!)ozk'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 ALLOWED_HOSTS = ['*']
 
-
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-m5qhsr@)hlft_r+5tyl$zniuq^1d-i5*cj^stav8uvft9!)ozk')
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 # Application definition
 
